@@ -3,7 +3,11 @@ package com.wr.spring.ai.ollama;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+
+import static org.springframework.ai.chat.client.ChatClient.create;
+import static org.springframework.util.MimeTypeUtils.IMAGE_PNG;
 
 @Service
 public class ChatService {
@@ -30,4 +34,14 @@ public class ChatService {
         return chatModel.call(query);
     }
 
+    // multimodal support for Ollama - (LlaVa and Baklava models)
+    public String getImageInfo() {
+        return create(chatModel).prompt()
+                .user(u -> u.text("Explain what do you see on this picture?")
+                        .media(IMAGE_PNG, new ClassPathResource("/image/boat.png")))
+                .call()
+                .content();
+    }
+
 }
+

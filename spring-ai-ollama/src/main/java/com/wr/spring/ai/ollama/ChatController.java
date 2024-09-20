@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/chat")
 public class ChatController {
@@ -23,6 +25,11 @@ public class ChatController {
     @GetMapping("/ask")
     public String ask(@RequestParam(value = "query") String query) {
         return chatService.ask(query);
+    }
+
+    @GetMapping("/image")
+    public String getImageInfo() {
+        return chatService.getImageInfo();
     }
 
 }
