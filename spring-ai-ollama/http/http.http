@@ -1,0 +1,7 @@
+###
+GET http://localhost:8080/chat/image
+Accept: application/json
+
+###
+GET http://localhost:8080/chat/joke
+Accept: application/json

@@ -27,7 +27,10 @@ public class ChatService {
 
         Prompt prompt = promptTemplate.create();
 
-        return chatModel.call(prompt).getResult().getOutput().getContent();
+        return chatModel.call(prompt)
+                .getResult()
+                .getOutput()
+                .getContent();
     }
 
     public String ask(String query) {
@@ -36,7 +39,8 @@ public class ChatService {
 
     // multimodal support for Ollama - (LlaVa and Baklava models)
     public String getImageInfo() {
-        return create(chatModel).prompt()
+        return create(chatModel)
+                .prompt()
                 .user(u -> u.text("Explain what do you see on this picture?")
                         .media(IMAGE_PNG, new ClassPathResource("/image/boat.png")))
                 .call()
