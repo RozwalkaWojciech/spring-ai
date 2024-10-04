@@ -1,5 +1,6 @@
-package com.wr.springaiopenai;
+package com.wr.springaiopenai.controller;
 
+import com.wr.springaiopenai.service.ChatService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
